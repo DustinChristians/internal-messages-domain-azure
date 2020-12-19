@@ -11,7 +11,6 @@ pool:
 
 variables:
   solution: '**/*.sln'
-  tests: '**\\*Tests.dll;!**\\*TestUtilities.dll;!**\\obj\\**'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -33,7 +32,11 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    testAssemblyVer2: '$(tests)'
+    testAssemblyVer2:  |
+     **\*tests.dll
+     !**\*Utilities.dll
+     !**\*TestAdapter.dll
+     !**\obj\**
 
 - task: PublishBuildArtifacts@1
   inputs:
