@@ -22,12 +22,12 @@ namespace Internal.Messages.UnitTests.Repositories
                 yield return new TestCaseData(new MessagesResourceParameters
                 {
                     ChannelId = 3,
-                    SearchQuery = null
+                    SearchQuery = null,
                 });
                 yield return new TestCaseData(new MessagesResourceParameters
                 {
                     ChannelId = 1,
-                    SearchQuery = "Three"
+                    SearchQuery = "Three",
                 });
             }
         }
@@ -65,7 +65,7 @@ namespace Internal.Messages.UnitTests.Repositories
             {
                 Email = "test@test.com",
                 FirstName = "Test",
-                LastName = "User"
+                LastName = "User",
             };
 
             var messageOne = new Message()
@@ -128,7 +128,7 @@ namespace Internal.Messages.UnitTests.Repositories
             {
                 Email = "test@test.com",
                 FirstName = "Test",
-                LastName = "User"
+                LastName = "User",
             };
 
             var messageOne = new Message()
@@ -190,7 +190,7 @@ namespace Internal.Messages.UnitTests.Repositories
             {
                 Email = "test@test.com",
                 FirstName = "Test",
-                LastName = "User"
+                LastName = "User",
             };
 
             var messageOne = new Message()
@@ -252,7 +252,7 @@ namespace Internal.Messages.UnitTests.Repositories
             {
                 Email = "test@test.com",
                 FirstName = "Test",
-                LastName = "User"
+                LastName = "User",
             };
 
             var messageOne = new Message()

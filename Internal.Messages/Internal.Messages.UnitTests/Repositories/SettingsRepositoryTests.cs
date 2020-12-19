@@ -53,7 +53,7 @@ namespace Internal.Messages.UnitTests.Repositories
                 Value = "TestValue",
                 Type = typeof(string).ToString(),
                 DisplayName = "Test Key",
-                Description = "For Testing GetSettingValue"
+                Description = "For Testing GetSettingValue",
             };
 
             using (var context = new InternalMessagesContext(options))
@@ -113,7 +113,7 @@ namespace Internal.Messages.UnitTests.Repositories
                 Value = "TestValue",
                 Type = typeof(string).ToString(),
                 DisplayName = "Test Key",
-                Description = "For Testing GetSettingValue"
+                Description = "For Testing GetSettingValue",
             };
 
             using (var context = new InternalMessagesContext(options))

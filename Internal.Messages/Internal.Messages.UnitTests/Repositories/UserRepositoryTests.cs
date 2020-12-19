@@ -24,56 +24,56 @@ namespace Internal.Messages.UnitTests.Repositories
                     Email = "test1@test.com",
                     FirstName = null,
                     LastName = null,
-                    SearchQuery = null
+                    SearchQuery = null,
                 });
                 yield return new TestCaseData(new UsersResourceParameters
                 {
                     Email = null,
                     FirstName = "test1",
                     LastName = null,
-                    SearchQuery = null
+                    SearchQuery = null,
                 });
                 yield return new TestCaseData(new UsersResourceParameters
                 {
                     Email = null,
                     FirstName = null,
                     LastName = "user1",
-                    SearchQuery = null
+                    SearchQuery = null,
                 });
                 yield return new TestCaseData(new UsersResourceParameters
                 {
                     Email = null,
                     FirstName = null,
                     LastName = null,
-                    SearchQuery = "test1"
+                    SearchQuery = "test1",
                 });
                 yield return new TestCaseData(new UsersResourceParameters
                 {
                     Email = "Test1@test.com",
                     FirstName = null,
                     LastName = null,
-                    SearchQuery = null
+                    SearchQuery = null,
                 });
                 yield return new TestCaseData(new UsersResourceParameters
                 {
                     Email = null,
                     FirstName = "Test1",
                     LastName = null,
-                    SearchQuery = null
+                    SearchQuery = null,
                 });
                 yield return new TestCaseData(new UsersResourceParameters
                 {
                     Email = null,
                     FirstName = null,
                     LastName = "User1",
-                    SearchQuery = null
+                    SearchQuery = null,
                 });
                 yield return new TestCaseData(new UsersResourceParameters
                 {
                     Email = null,
                     FirstName = null,
                     LastName = null,
-                    SearchQuery = "Test1"
+                    SearchQuery = "Test1",
                 });
             }
         }
@@ -87,28 +87,28 @@ namespace Internal.Messages.UnitTests.Repositories
                     Email = "NotFound",
                     FirstName = null,
                     LastName = null,
-                    SearchQuery = null
+                    SearchQuery = null,
                 });
                 yield return new TestCaseData(new UsersResourceParameters
                 {
                     Email = null,
                     FirstName = "NotFound",
                     LastName = null,
-                    SearchQuery = null
+                    SearchQuery = null,
                 });
                 yield return new TestCaseData(new UsersResourceParameters
                 {
                     Email = null,
                     FirstName = null,
                     LastName = "NotFound",
-                    SearchQuery = null
+                    SearchQuery = null,
                 });
                 yield return new TestCaseData(new UsersResourceParameters
                 {
                     Email = null,
                     FirstName = null,
                     LastName = null,
-                    SearchQuery = "NotFound"
+                    SearchQuery = "NotFound",
                 });
             }
         }
@@ -146,14 +146,14 @@ namespace Internal.Messages.UnitTests.Repositories
             {
                 Email = "test1@test.com",
                 FirstName = "Test1",
-                LastName = "User1"
+                LastName = "User1",
             };
 
             var user2 = new User()
             {
                 Email = "test2@test.com",
                 FirstName = "Test2",
-                LastName = "User2"
+                LastName = "User2",
             };
 
             using (var context = new InternalMessagesContext(options))
@@ -177,7 +177,7 @@ namespace Internal.Messages.UnitTests.Repositories
                     Email = null,
                     FirstName = null,
                     LastName = null,
-                    SearchQuery = null
+                    SearchQuery = null,
                 };
 
                 // Get Users with null properties for parameters
@@ -200,14 +200,14 @@ namespace Internal.Messages.UnitTests.Repositories
             {
                 Email = "test1@test.com",
                 FirstName = "Test1",
-                LastName = "User1"
+                LastName = "User1",
             };
 
             var user2 = new User()
             {
                 Email = "test2@test.com",
                 FirstName = "Test2",
-                LastName = "User2"
+                LastName = "User2",
             };
 
             using (var context = new InternalMessagesContext(options))
@@ -244,14 +244,14 @@ namespace Internal.Messages.UnitTests.Repositories
             {
                 Email = "test1@test.com",
                 FirstName = "Test1",
-                LastName = "User1"
+                LastName = "User1",
             };
 
             var user2 = new User()
             {
                 Email = "test2@test.com",
                 FirstName = "Test2",
-                LastName = "User2"
+                LastName = "User2",
             };
 
             using (var context = new InternalMessagesContext(options))
