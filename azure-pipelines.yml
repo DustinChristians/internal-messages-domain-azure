@@ -33,7 +33,7 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    testSelector: 
+    testAssemblyVer2: '$(tests)'
 
 - task: PublishBuildArtifacts@1
   inputs:
