@@ -11,7 +11,7 @@ pool:
 
 variables:
   solution: '**/*.sln'
-  tests: '**\\*Tests.dll\n!**\\*TestUtilities.dll\n!**\\obj\\**'
+  tests: '**\\*Tests.dll;!**\\*TestUtilities.dll;!**\\obj\\**'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
