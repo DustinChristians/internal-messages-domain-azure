@@ -6,7 +6,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.Messages.Core", "I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.Messages.Infrastructure", "Internal.Messages.Infrastructure\Internal.Messages.Infrastructure.csproj", "{7BB19F68-137B-4688-A43C-0BEA14A3DF97}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.Messages.Tests", "Internal.Messages.UnitTests\Internal.Messages.Tests.csproj", "{C6A000CB-06B5-4EC7-95C8-A622CADA6868}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.Messages.Tests", "Internal.Messages.Tests\Internal.Messages.Tests.csproj", "{C6A000CB-06B5-4EC7-95C8-A622CADA6868}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internal.Messages.Configuration", "Internal.Messages.Mapping\Internal.Messages.Configuration.csproj", "{8295C735-7109-4432-BEFD-7D018360B085}"
 EndProject
