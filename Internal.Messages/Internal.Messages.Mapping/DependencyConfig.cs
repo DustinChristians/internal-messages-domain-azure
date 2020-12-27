@@ -6,6 +6,7 @@ using Internal.Messages.Core.Abstractions.Services;
 using Internal.Messages.Core.Utilities;
 using Internal.Messages.Infrastructure.Services;
 using Internal.Messages.Repository.Repositories;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,9 +14,9 @@ namespace Internal.Messages.Mapping
 {
     public class DependencyConfig
     {
-        public static void Register(IServiceCollection services, IConfiguration configuration, string projectAssemblyName)
+        public static void Register(IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env, string projectAssemblyName)
         {
-            DatabaseConfig.AddDatabases(services, configuration);
+            DatabaseConfig.AddDatabases(services, configuration, env);
             AddDependenciesAutomatically(services);
             ConfigureAutomapper(services, projectAssemblyName);
             LoggerConfig.AddDependencies(services);

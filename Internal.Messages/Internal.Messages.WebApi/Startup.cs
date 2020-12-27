@@ -14,12 +14,14 @@ namespace Internal.Messages.WebApi
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
+            Environment = environment;
         }
 
         public IConfiguration Configuration { get; }
+        private IWebHostEnvironment Environment { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -64,7 +66,7 @@ namespace Internal.Messages.WebApi
             services.AddScoped<ApiExceptionFilter>();
 
             // Register the shared dependencies in the Mapping project
-            DependencyConfig.Register(services, Configuration, System.Reflection.Assembly.GetEntryAssembly().GetName().Name);
+            DependencyConfig.Register(services, Configuration, Environment, System.Reflection.Assembly.GetEntryAssembly().GetName().Name);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
