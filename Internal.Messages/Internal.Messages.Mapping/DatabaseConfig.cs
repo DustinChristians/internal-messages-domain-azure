@@ -1,5 +1,6 @@
 using System;
 using Internal.Messages.Repository.Data;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,14 +29,26 @@ namespace Internal.Messages.Mapping
             }
         }
 
-        public static void AddDatabases(IServiceCollection services, IConfiguration configuration)
+        public static void AddDatabases(IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
         {
-            services.AddDbContext<InternalMessagesContext>(options =>
+            if (env.IsDevelopment())
+            {
+                services.AddDbContext<InternalMessagesContext>(options =>
                 options
                 .UseSqlServer(
                     configuration.GetConnectionString("Internal.Messages.Repository"),
                     sqlServerOptions => sqlServerOptions.CommandTimeout(30))
                 .EnableSensitiveDataLogging());
+            }
+            else
+            {
+                services.AddDbContext<InternalMessagesContext>(options =>
+                options
+                .UseSqlite(
+                    configuration.GetConnectionString("Internal.Messages.Repository"),
+                    sqlliteOptions => sqlliteOptions.CommandTimeout(30))
+                .EnableSensitiveDataLogging());
+            }
         }
     }
 }
