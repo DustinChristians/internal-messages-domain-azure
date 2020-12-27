@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 
 namespace Internal.Messages.WebApi.Controllers
 {
@@ -34,9 +35,18 @@ namespace Internal.Messages.WebApi.Controllers
         [HttpHead]
         public async Task<ActionResult<IEnumerable<ReadMessage>>> GetMessages([FromQuery] MessagesResourceParameters parameters)
         {
-            var messages = await messagesService.MessagesRepository.GetMessagesAsync(parameters);
+            try
+            {
+                var messages = await messagesService.MessagesRepository.GetMessagesAsync(parameters);
 
-            return messages == null ? NotFound() : (ActionResult)Ok(mapper.Map<IEnumerable<ReadMessage>>(messages));
+                return messages == null ? NotFound() : (ActionResult)Ok(mapper.Map<IEnumerable<ReadMessage>>(messages));
+            }
+            catch (Exception ex)
+            {
+                var error = JsonConvert.SerializeObject(ex);
+
+                return new List<ReadMessage> { new ReadMessage { Text = error } };
+            }
         }
 
         [HttpGet("{messageId:int}", Name = "GetMessageById")]
