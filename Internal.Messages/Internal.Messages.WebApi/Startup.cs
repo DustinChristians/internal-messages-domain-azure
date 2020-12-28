@@ -1,4 +1,4 @@
-using Internal.Messages.Mapping;
+using Internal.Messages.Configuration;
 using Internal.Messages.WebApi.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

@@ -1,5 +1,5 @@
 using System;
-using Internal.Messages.Mapping;
+using Internal.Messages.Configuration;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Serilog;

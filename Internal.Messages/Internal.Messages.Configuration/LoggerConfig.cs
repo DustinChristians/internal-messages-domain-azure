@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
 
-namespace Internal.Messages.Mapping
+namespace Internal.Messages.Configuration
 {
     public class LoggerConfig
     {

@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Internal.Messages.Mapping
+namespace Internal.Messages.Configuration
 {
     public static class DatabaseConfig
     {

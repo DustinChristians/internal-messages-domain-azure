@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Internal.Messages.Mapping\Internal.Messages.Configuration.csproj" />
+    <ProjectReference Include="..\Internal.Messages.Configuration\Internal.Messages.Configuration.csproj" />
   </ItemGroup>
 
 
