@@ -19,7 +19,7 @@ namespace Internal.Messages.WebApi
 
                 var host = CreateHostBuilder(args).Build();
 
-                DatabaseConfig.SeedDatabases(host);
+                DatabaseConfig.SeedDatabase(host);
 
                 // Will create a database logger now that the database exists
                 Log.Logger = LoggerConfig.CreateLogger();

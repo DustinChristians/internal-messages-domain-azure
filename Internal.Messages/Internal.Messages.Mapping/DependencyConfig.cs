@@ -16,7 +16,11 @@ namespace Internal.Messages.Mapping
     {
         public static void Register(IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env, string projectAssemblyName)
         {
-            DatabaseConfig.AddDatabases(services, configuration, env);
+            DatabaseConfig.AddDatabase(
+                configuration.GetConnectionString("Internal.Messages.Repository"),
+                services,
+                env);
+
             AddDependenciesAutomatically(services);
             ConfigureAutomapper(services, projectAssemblyName);
             LoggerConfig.AddDependencies(services);

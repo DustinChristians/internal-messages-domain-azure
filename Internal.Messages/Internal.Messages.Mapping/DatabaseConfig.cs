@@ -1,17 +1,17 @@
 using System;
 using Internal.Messages.Repository.Data;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace Internal.Messages.Mapping
 {
-    public class DatabaseConfig
+    public static class DatabaseConfig
     {
-        public static void SeedDatabases(IHost host)
+        public static void SeedDatabase(IHost host)
         {
             using (var scope = host.Services.CreateScope())
             {
@@ -29,26 +29,33 @@ namespace Internal.Messages.Mapping
             }
         }
 
-        public static void AddDatabases(IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
+        public static void AddDatabase(string connectionString, IServiceCollection services, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (connectionString.IsSqlLiteConnectionString())
             {
                 services.AddDbContext<InternalMessagesContext>(options =>
-                options
-                .UseSqlServer(
-                    configuration.GetConnectionString("Internal.Messages.Repository"),
-                    sqlServerOptions => sqlServerOptions.CommandTimeout(30))
-                .EnableSensitiveDataLogging());
+                    options
+                    .UseSqlite(
+                        connectionString,
+                        sqlliteOptions => sqlliteOptions.CommandTimeout(30))
+                    .EnableSensitiveDataLogging());
             }
             else
             {
                 services.AddDbContext<InternalMessagesContext>(options =>
-                options
-                .UseSqlite(
-                    configuration.GetConnectionString("Internal.Messages.Repository"),
-                    sqlliteOptions => sqlliteOptions.CommandTimeout(30))
-                .EnableSensitiveDataLogging());
+                    options
+                    .UseSqlServer(
+                        connectionString,
+                        sqlServerOptions => sqlServerOptions.CommandTimeout(30))
+                    .EnableSensitiveDataLogging());
             }
+        }
+
+        private static bool IsSqlLiteConnectionString(this string connectionString)
+        {
+            var connBuilder = new SqlConnectionStringBuilder(connectionString);
+
+            return connBuilder.DataSource.EndsWith(".db");
         }
     }
 }
