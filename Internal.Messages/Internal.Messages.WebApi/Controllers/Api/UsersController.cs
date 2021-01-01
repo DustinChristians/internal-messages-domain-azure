@@ -31,7 +31,7 @@ namespace Internal.Messages.WebApi.Controllers
         {
             var users = await usersService.UsersRepository.GetUsersAsync(parameters);
 
-            return users == null ? NotFound() : (ActionResult)Ok(mapper.Map<IEnumerable<ReadUser>>(users));
+            return Ok(mapper.Map<IEnumerable<ReadUser>>(users));
         }
 
         [HttpGet("{userId:int}", Name = "GetUserById")]
