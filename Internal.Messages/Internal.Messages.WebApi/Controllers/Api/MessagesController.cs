@@ -5,6 +5,7 @@ using AutoMapper;
 using Internal.Messages.Core.Abstractions.Services;
 using Internal.Messages.Core.Models.Domain;
 using Internal.Messages.Core.Models.ResourceParameters;
+using Internal.Messages.WebApi.Models;
 using Internal.Messages.WebApi.Models.Message;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -35,18 +36,9 @@ namespace Internal.Messages.WebApi.Controllers
         [HttpHead]
         public async Task<ActionResult<IEnumerable<ReadMessage>>> GetMessages([FromQuery] MessagesResourceParameters parameters)
         {
-            try
-            {
-                var messages = await messagesService.MessagesRepository.GetMessagesAsync(parameters);
+            var messages = await messagesService.MessagesRepository.GetMessagesAsync(parameters);
 
-                return messages == null ? NotFound() : (ActionResult)Ok(mapper.Map<IEnumerable<ReadMessage>>(messages));
-            }
-            catch (Exception ex)
-            {
-                var error = JsonConvert.SerializeObject(ex);
-
-                return new List<ReadMessage> { new ReadMessage { Text = error } };
-            }
+            return Ok(mapper.Map<IEnumerable<ReadMessage>>(messages));
         }
 
         [HttpGet("{messageId:int}", Name = "GetMessageById")]
