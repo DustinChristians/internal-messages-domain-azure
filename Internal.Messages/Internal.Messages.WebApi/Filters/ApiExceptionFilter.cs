@@ -1,4 +1,5 @@
 using System;
+using Internal.Messages.Core.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
@@ -32,7 +33,7 @@ namespace Internal.Messages.WebApi.Filters
                 }
 
                 filterContext.HttpContext.Response.StatusCode = (int)System.Net.HttpStatusCode.InternalServerError;
-                filterContext.Result = new BadRequestObjectResult(new { message = filterContext.Exception.Message, currentDate = DateTime.Now });
+                filterContext.Result = new BadRequestObjectResult(new { errors = filterContext.Exception.GetExceptionMessages(), currentDate = DateTime.Now });
                 filterContext.ExceptionHandled = true;
             }
         }
