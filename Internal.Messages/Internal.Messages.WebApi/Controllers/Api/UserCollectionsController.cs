@@ -13,7 +13,8 @@ using Microsoft.Extensions.Logging;
 namespace Internal.Messages.WebApi.Controllers.Api
 {
     [ApiController]
-    [Route("api/usercollections")]
+    [ApiVersion("1")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class UserCollectionsController : BaseController<UserCollectionsController>
     {
         private readonly IUsersService usersService;
