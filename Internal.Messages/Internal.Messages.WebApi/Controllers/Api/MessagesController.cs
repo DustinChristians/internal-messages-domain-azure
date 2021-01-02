@@ -19,6 +19,8 @@ using Newtonsoft.Json;
 namespace Internal.Messages.WebApi.Controllers
 {
     [ApiController]
+    [ApiVersion("1")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class MessagesController : BaseController<MessagesController>
     {
         private readonly IMessagesService messagesService;
@@ -49,10 +51,10 @@ namespace Internal.Messages.WebApi.Controllers
             return message == null ? NotFound() : (ActionResult)Ok(mapper.Map<ReadMessage>(message));
         }
 
-        [HttpGet("{messageId:guid}", Name = "GetMessageByGuid")]
-        public async Task<ActionResult<ReadMessage>> GetMessage(Guid messageId)
+        [HttpGet("{messageGuid:guid}", Name = "GetMessageByGuid")]
+        public async Task<ActionResult<ReadMessage>> GetMessage(Guid messageGuid)
         {
-            var message = await messagesService.MessagesRepository.GetByGuidAsync(messageId);
+            var message = await messagesService.MessagesRepository.GetByGuidAsync(messageGuid);
 
             return message == null ? NotFound() : (ActionResult)Ok(mapper.Map<ReadMessage>(message));
         }
