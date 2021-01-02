@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 namespace Internal.Messages.WebApi.Controllers
 {
     [ApiController]
+    [ApiVersion("1")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class UsersController : BaseController<UsersController>
     {
         private readonly IUsersService usersService;
@@ -42,10 +44,10 @@ namespace Internal.Messages.WebApi.Controllers
             return user == null ? NotFound() : (ActionResult)Ok(mapper.Map<ReadUser>(user));
         }
 
-        [HttpGet("{userId:guid}", Name = "GetUserByGuid")]
-        public async Task<ActionResult<ReadUser>> GetUser(Guid userId)
+        [HttpGet("{userGuid:guid}", Name = "GetUserByGuid")]
+        public async Task<ActionResult<ReadUser>> GetUser(Guid userGuid)
         {
-            var user = await usersService.UsersRepository.GetByGuidAsync(userId);
+            var user = await usersService.UsersRepository.GetByGuidAsync(userGuid);
 
             return user == null ? NotFound() : (ActionResult)Ok(mapper.Map<ReadUser>(user));
         }
