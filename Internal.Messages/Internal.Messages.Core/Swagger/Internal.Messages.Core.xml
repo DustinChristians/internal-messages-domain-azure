@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Internal.Messages.Core</name>
+    </assembly>
+    <members>
+        <member name="F:Internal.Messages.Core.Types.DependencyTypes.Scoped">
+            <summary>
+            Created once per request within the scope.
+            </summary>
+        </member>
+        <member name="F:Internal.Messages.Core.Types.DependencyTypes.Singleton">
+            <summary>
+            A single instance throughout the application.
+            </summary>
+        </member>
+        <member name="F:Internal.Messages.Core.Types.DependencyTypes.Transient">
+            <summary>
+            created each time they are requested.
+            </summary>
+        </member>
+    </members>
+</doc>
